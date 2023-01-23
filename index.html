@@ -15,7 +15,7 @@
   <!-- favico Icons -->
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favico/favicon-16x16.png">
 
-
+  <link rel="manifest" href="manifest.json">
   <title>Sentinel Security & Manpower Services</title>
 
   <!-- slider stylesheet -->
@@ -366,6 +366,27 @@
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js">
   </script>
+
+<script>
+  window.addEventListener('load', () => {
+    registerSW();
+  });
+
+  // Register the Service Worker
+  async function registerSW() {
+    if ('serviceWorker' in navigator) {
+      try {
+        await navigator
+              .serviceWorker
+              .register('serviceworker.js');
+      }
+      catch (e) {
+        console.log('SW registration failed');
+      }
+    }
+  }
+</script>
+
   <script type="text/javascript">
     $(".owl-carousel").owlCarousel({
       loop: true,
